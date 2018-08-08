@@ -36,6 +36,7 @@ import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 import com.github.cataclysmuprising.mybatis.service.base.api.root.UpdateableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,7 @@ public class UpdateableServiceImpl<T, C> extends BaseServiceImpl implements Upda
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long update(T record, long recordUpdId) throws DuplicatedEntryException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for updating" + getObjectName(record) + "informations." + LOG_SUFFIX);
@@ -63,6 +65,7 @@ public class UpdateableServiceImpl<T, C> extends BaseServiceImpl implements Upda
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void update(List<T> records, long recordUpdId) throws DuplicatedEntryException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for updating multi" + getObjectName(records) + "informations." + LOG_SUFFIX);
@@ -75,6 +78,7 @@ public class UpdateableServiceImpl<T, C> extends BaseServiceImpl implements Upda
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long update(C criteria, HashMap<String, Object> updateItems, long recordUpdId) throws BusinessException, DuplicatedEntryException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for updating" + updateItems + " with criteria ==> " + criteria + LOG_SUFFIX);

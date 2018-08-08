@@ -35,6 +35,7 @@ import com.github.cataclysmuprising.mybatis.exception.DAOException;
 import com.github.cataclysmuprising.mybatis.service.base.api.root.SelectableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class SelectableServiceImpl<T, C> extends BaseServiceImpl implements Sele
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public T select(long primaryKey) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetch by primary key # " + primaryKey + " ==> " + LOG_SUFFIX);
 		T record;
@@ -60,6 +62,7 @@ public class SelectableServiceImpl<T, C> extends BaseServiceImpl implements Sele
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public T select(C criteria) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching single record by criteria ==> " + criteria + LOG_SUFFIX);
 		T record;
@@ -73,6 +76,7 @@ public class SelectableServiceImpl<T, C> extends BaseServiceImpl implements Sele
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<T> selectList(C criteria) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching multi records by criteria ==> " + criteria + LOG_SUFFIX);
 		List<T> records;
@@ -86,6 +90,7 @@ public class SelectableServiceImpl<T, C> extends BaseServiceImpl implements Sele
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public long selectCounts(C criteria) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching record counts by criteria ==> " + criteria + LOG_SUFFIX);
 		long count;

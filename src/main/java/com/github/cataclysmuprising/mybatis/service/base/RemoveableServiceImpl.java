@@ -36,6 +36,7 @@ import com.github.cataclysmuprising.mybatis.exception.DAOException;
 import com.github.cataclysmuprising.mybatis.service.base.api.root.RemoveableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 public class RemoveableServiceImpl<T, C> extends BaseServiceImpl implements RemoveableService<T, C> {
 	private static final Logger serviceLogger = LogManager.getLogger("serviceLogs." + RemoveableServiceImpl.class.getName());
@@ -46,6 +47,7 @@ public class RemoveableServiceImpl<T, C> extends BaseServiceImpl implements Remo
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long delete(long id, long recordUpdId) throws ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for delete by ID ==> " + id + LOG_SUFFIX);
@@ -60,6 +62,7 @@ public class RemoveableServiceImpl<T, C> extends BaseServiceImpl implements Remo
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long delete(C criteria, long recordUpdId) throws ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for delete by criteria ==> " + criteria + LOG_SUFFIX);

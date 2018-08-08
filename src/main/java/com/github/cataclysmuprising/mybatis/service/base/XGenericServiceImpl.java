@@ -37,6 +37,7 @@ import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 import com.github.cataclysmuprising.mybatis.service.base.api.XGenericService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void insert(T record, long recordRegId) throws DuplicatedEntryException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordRegId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for inserting" + getObjectName(record) + "informations." + LOG_SUFFIX);
@@ -61,6 +63,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void insert(List<T> records, long recordRegId) throws DuplicatedEntryException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordRegId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for inserting" + getObjectName(records) + "informations." + LOG_SUFFIX);
@@ -73,6 +76,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void insert(long key1, long key2, long recordRegId) throws DuplicatedEntryException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordRegId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for inserting with keys {key1=" + key1 + ",key2=" + key2 + "}" + LOG_SUFFIX);
@@ -85,6 +89,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void merge(long mainKey, List<Long> relatedKeys, long recordUpdId) throws DuplicatedEntryException, ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for merging (Main Key = " + mainKey + ") with related keys ==> " + relatedKeys + LOG_SUFFIX);
@@ -97,6 +102,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void merge(List<Long> relatedKeys, long joinKey, long recordUpdId) throws DuplicatedEntryException, ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for merging (Join Key = " + joinKey + ") with related keys ==> " + relatedKeys + LOG_SUFFIX);
@@ -109,6 +115,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long delete(long key1, long key2, long recordUpdId) throws ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for delete by Keys ==> {key1=" + key1 + ",key2=" + key2 + "}" + LOG_SUFFIX);
@@ -123,6 +130,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public long delete(C criteria, long recordUpdId) throws ConsistencyViolationException, BusinessException {
 		serviceLogger.info(LOG_PREFIX + "This transaction was initiated by User ID # " + recordUpdId + LOG_SUFFIX);
 		serviceLogger.info(LOG_PREFIX + "Transaction start for delete by criteria ==> " + criteria + LOG_SUFFIX);
@@ -137,6 +145,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Long> selectByKey1(long key1) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching related keys by key1# " + key1 + LOG_SUFFIX);
 		List<Long> relatedKeys;
@@ -150,6 +159,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Long> selectByKey2(long key2) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching related keys by key2# " + key2 + LOG_SUFFIX);
 		List<Long> relatedKeys;
@@ -163,6 +173,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public T select(long key1, long key2) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching single record by Keys ==> {key1=" + key1 + ",key2=" + key2 + "}" + LOG_SUFFIX);
 		T record;
@@ -176,6 +187,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<T> selectList(C criteria) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching multi records by criteria ==> " + criteria + LOG_SUFFIX);
 		List<T> records;
@@ -189,6 +201,7 @@ public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGener
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public long selectCounts(C criteria) throws BusinessException {
 		serviceLogger.info(LOG_PREFIX + "Transaction start for fetching record counts by criteria ==> " + criteria + LOG_SUFFIX);
 		long count;
