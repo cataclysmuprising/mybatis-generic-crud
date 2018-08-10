@@ -27,14 +27,14 @@
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base;
+package com.github.cataclysmuprising.mybatis.service;
 
-import com.github.cataclysmuprising.mybatis.dao.api.CommonGenericDao;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
-import com.github.cataclysmuprising.mybatis.service.base.api.CommonGenericService;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.UpdateableService;
+import com.github.cataclysmuprising.mybatis.repository.api.CommonGenericDao;
+import com.github.cataclysmuprising.mybatis.service.api.CommonGenericService;
+import com.github.cataclysmuprising.mybatis.service.api.root.UpdateableService;
 
 import java.util.HashMap;
 import java.util.List;

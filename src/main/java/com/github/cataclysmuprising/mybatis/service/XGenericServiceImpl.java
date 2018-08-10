@@ -27,14 +27,14 @@
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base;
+package com.github.cataclysmuprising.mybatis.service;
 
-import com.github.cataclysmuprising.mybatis.dao.api.XGenericDao;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
 import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
-import com.github.cataclysmuprising.mybatis.service.base.api.XGenericService;
+import com.github.cataclysmuprising.mybatis.repository.api.XGenericDao;
+import com.github.cataclysmuprising.mybatis.service.api.XGenericService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;

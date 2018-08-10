@@ -27,12 +27,12 @@
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base;
+package com.github.cataclysmuprising.mybatis.service;
 
-import com.github.cataclysmuprising.mybatis.dao.api.SelectableDao;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.SelectableService;
+import com.github.cataclysmuprising.mybatis.repository.api.SelectableDao;
+import com.github.cataclysmuprising.mybatis.service.api.root.SelectableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;

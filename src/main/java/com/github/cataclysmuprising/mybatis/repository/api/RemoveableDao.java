@@ -27,7 +27,7 @@
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.dao.api;
+package com.github.cataclysmuprising.mybatis.repository.api;
 
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;

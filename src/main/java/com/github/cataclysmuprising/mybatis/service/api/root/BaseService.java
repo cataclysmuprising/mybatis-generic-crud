@@ -21,18 +21,26 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - BaseServiceImpl.java
+ *  	mybatis-generic-crud - BaseService.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:58 PM
+ * 	    Last Modified - 8/8/18 2:09 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
+package com.github.cataclysmuprising.mybatis.service.api.root;
 
-package com.github.cataclysmuprising.mybatis.service.base;
+import java.util.List;
 
-public class BaseServiceImpl {
-	public static final String LOG_BREAKER_OPEN = "**********************************************************************";
-	public static final String LOG_BREAKER_CLOSE = "############################## xxxxxxxx ##############################";
-	public static final String LOG_PREFIX = "----------  ";
-	public static final String LOG_SUFFIX = "  ----------";
+public interface BaseService<T> {
+
+	default String getObjectName(T record) {
+		return " '" + record.getClass().getSimpleName().replace("Bean", "") + "' ";
+	}
+
+	default String getObjectName(List<T> records) {
+		if (records == null || records.isEmpty()) {
+			return "";
+		}
+		return " '" + records.get(0).getClass().getSimpleName().replace("Bean", "") + "' ";
+	}
 }

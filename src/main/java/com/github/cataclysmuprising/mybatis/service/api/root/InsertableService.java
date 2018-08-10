@@ -21,14 +21,21 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - CommonGenericDao.java
+ *  	mybatis-generic-crud - InsertableService.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:51 PM
+ * 	    Last Modified - 8/8/18 2:09 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.dao.api;
+package com.github.cataclysmuprising.mybatis.service.api.root;
 
-public interface CommonGenericDao<T, C> extends SelectableDao<T, C>, InsertableDao<T>, UpdateableDao<T, C>, RemoveableDao<T, C> {
+import com.github.cataclysmuprising.mybatis.exception.BusinessException;
+import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 
+import java.util.List;
+
+public interface InsertableService<T> extends BaseService<T> {
+	long insert(T record, long recordRegId) throws DuplicatedEntryException, BusinessException;
+
+	void insert(List<T> records, long recordRegId) throws DuplicatedEntryException, BusinessException;
 }

@@ -27,13 +27,13 @@
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base;
+package com.github.cataclysmuprising.mybatis.service;
 
-import com.github.cataclysmuprising.mybatis.dao.api.RemoveableDao;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.RemoveableService;
+import com.github.cataclysmuprising.mybatis.repository.api.RemoveableDao;
+import com.github.cataclysmuprising.mybatis.service.api.root.RemoveableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.transaction.annotation.Transactional;

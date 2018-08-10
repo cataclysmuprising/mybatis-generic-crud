@@ -21,18 +21,24 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - CommonGenericService.java
+ *  	mybatis-generic-crud - SelectableService.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 2:10 PM
+ * 	    Last Modified - 8/8/18 2:09 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base.api;
+package com.github.cataclysmuprising.mybatis.service.api.root;
 
-import com.github.cataclysmuprising.mybatis.service.base.api.root.InsertableService;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.RemoveableService;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.SelectableService;
-import com.github.cataclysmuprising.mybatis.service.base.api.root.UpdateableService;
+import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 
-public interface CommonGenericService<T, C> extends SelectableService<T, C>, InsertableService<T>, UpdateableService<T, C>, RemoveableService<T, C> {
+import java.util.List;
+
+public interface SelectableService<T, C> extends BaseService<T> {
+	T select(long primaryKey) throws BusinessException;
+
+	T select(C criteria) throws BusinessException;
+
+	List<T> selectList(C criteria) throws BusinessException;
+
+	long selectCounts(C criteria) throws BusinessException;
 }

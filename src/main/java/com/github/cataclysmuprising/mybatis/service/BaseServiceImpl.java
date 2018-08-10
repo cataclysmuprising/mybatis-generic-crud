@@ -21,19 +21,18 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - RemoveableService.java
+ *  	mybatis-generic-crud - BaseServiceImpl.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 2:09 PM
+ * 	    Last Modified - 8/8/18 1:58 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.service.base.api.root;
 
-import com.github.cataclysmuprising.mybatis.exception.BusinessException;
-import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
+package com.github.cataclysmuprising.mybatis.service;
 
-public interface RemoveableService<T, C> extends BaseService<T> {
-	long delete(long id, long recordUpdId) throws ConsistencyViolationException, BusinessException;
-
-	long delete(C criteria, long recordUpdId) throws ConsistencyViolationException, BusinessException;
+public class BaseServiceImpl {
+	public static final String LOG_BREAKER_OPEN = "**********************************************************************";
+	public static final String LOG_BREAKER_CLOSE = "############################## xxxxxxxx ##############################";
+	public static final String LOG_PREFIX = "----------  ";
+	public static final String LOG_SUFFIX = "  ----------";
 }

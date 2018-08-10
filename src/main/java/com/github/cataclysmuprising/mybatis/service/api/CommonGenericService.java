@@ -21,24 +21,18 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - UpdateableDao.java
+ *  	mybatis-generic-crud - CommonGenericService.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:52 PM
+ * 	    Last Modified - 8/8/18 2:10 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
-package com.github.cataclysmuprising.mybatis.dao.api;
+package com.github.cataclysmuprising.mybatis.service.api;
 
-import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
+import com.github.cataclysmuprising.mybatis.service.api.root.InsertableService;
+import com.github.cataclysmuprising.mybatis.service.api.root.RemoveableService;
+import com.github.cataclysmuprising.mybatis.service.api.root.SelectableService;
+import com.github.cataclysmuprising.mybatis.service.api.root.UpdateableService;
 
-import java.util.HashMap;
-import java.util.List;
-
-public interface UpdateableDao<T, C> {
-	long update(T record, long recordUpdId) throws DuplicatedEntryException, DAOException;
-
-	void update(List<T> records, long recordUpdId) throws DuplicatedEntryException, DAOException;
-
-	long update(C criteria, HashMap<String, Object> updateItems, long recordUpdId) throws DAOException, DuplicatedEntryException;
+public interface CommonGenericService<T, C> extends SelectableService<T, C>, InsertableService<T>, UpdateableService<T, C>, RemoveableService<T, C> {
 }
