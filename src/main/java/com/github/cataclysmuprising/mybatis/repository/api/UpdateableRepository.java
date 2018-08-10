@@ -21,14 +21,24 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - CommonGenericDao.java
+ *  	mybatis-generic-crud - UpdateableRepository.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:51 PM
+ * 	    Last Modified - 8/8/18 1:52 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
 package com.github.cataclysmuprising.mybatis.repository.api;
 
-public interface CommonGenericDao<T, C> extends SelectableDao<T, C>, InsertableDao<T>, UpdateableDao<T, C>, RemoveableDao<T, C> {
+import com.github.cataclysmuprising.mybatis.exception.DAOException;
+import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 
+import java.util.HashMap;
+import java.util.List;
+
+public interface UpdateableRepository<T, C> {
+	long update(T record, long recordUpdId) throws DuplicatedEntryException, DAOException;
+
+	void update(List<T> records, long recordUpdId) throws DuplicatedEntryException, DAOException;
+
+	long update(C criteria, HashMap<String, Object> updateItems, long recordUpdId) throws DAOException, DuplicatedEntryException;
 }

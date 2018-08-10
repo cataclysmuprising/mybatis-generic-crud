@@ -32,7 +32,7 @@ package com.github.cataclysmuprising.mybatis.service;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.repository.api.RemoveableDao;
+import com.github.cataclysmuprising.mybatis.repository.api.RemoveableRepository;
 import com.github.cataclysmuprising.mybatis.service.api.root.RemoveableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,9 +40,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class RemoveableServiceImpl<T, C> extends BaseServiceImpl implements RemoveableService<T, C> {
 	private static final Logger serviceLogger = LogManager.getLogger("serviceLogs." + RemoveableServiceImpl.class.getName());
-	private RemoveableDao<T, C> dao;
+	private RemoveableRepository<T, C> dao;
 
-	public RemoveableServiceImpl(RemoveableDao<T, C> dao) {
+	public RemoveableServiceImpl(RemoveableRepository<T, C> dao) {
 		this.dao = dao;
 	}
 

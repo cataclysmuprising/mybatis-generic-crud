@@ -32,7 +32,7 @@ package com.github.cataclysmuprising.mybatis.service;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
-import com.github.cataclysmuprising.mybatis.repository.api.CommonGenericDao;
+import com.github.cataclysmuprising.mybatis.repository.api.CommonGenericRepository;
 import com.github.cataclysmuprising.mybatis.service.api.CommonGenericService;
 import com.github.cataclysmuprising.mybatis.service.api.root.UpdateableService;
 
@@ -46,7 +46,7 @@ public class CommonGenericServiceImpl<T, C> extends BaseServiceImpl implements C
 	private UpdateableService<T, C> updateableService;
 	private RemoveableServiceImpl<T, C> removeableService;
 
-	public CommonGenericServiceImpl(CommonGenericDao<T, C> dao) {
+	public CommonGenericServiceImpl(CommonGenericRepository<T, C> dao) {
 		selectableService = new SelectableServiceImpl<>(dao);
 		insertableService = new InsertableServiceImpl<>(dao);
 		updateableService = new UpdateableServiceImpl<>(dao);

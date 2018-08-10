@@ -21,9 +21,9 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - RemoveableDao.java
+ *  	mybatis-generic-crud - XGenericRepository.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:51 PM
+ * 	    Last Modified - 8/8/18 1:53 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
@@ -31,9 +31,33 @@ package com.github.cataclysmuprising.mybatis.repository.api;
 
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
+import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 
-public interface RemoveableDao<T, C> {
-	long delete(long primaryKey, long recordUpdId) throws ConsistencyViolationException, DAOException;
+import java.util.List;
+
+public interface XGenericRepository<T, C> {
+
+	void insert(T record, long recordRegId) throws DuplicatedEntryException, DAOException;
+
+	void insert(List<T> records, long recordRegId) throws DuplicatedEntryException, DAOException;
+
+	void insert(long key1, long key2, long recordRegId) throws DuplicatedEntryException, DAOException;
+
+	long delete(long key1, long key2, long recordUpdId) throws ConsistencyViolationException, DAOException;
 
 	long delete(C criteria, long recordUpdId) throws ConsistencyViolationException, DAOException;
+
+	void merge(long mainKey, List<Long> relatedKeys, long recordUpdId) throws DuplicatedEntryException, ConsistencyViolationException, DAOException;
+
+	void merge(List<Long> relatedKeys, long joinKey, long recordUpdId) throws DuplicatedEntryException, ConsistencyViolationException, DAOException;
+
+	List<Long> selectByKey1(long key1) throws DAOException;
+
+	List<Long> selectByKey2(long key2) throws DAOException;
+
+	T select(long key1, long key2) throws DAOException;
+
+	List<T> selectList(C criteria) throws DAOException;
+
+	long selectCounts(C criteria) throws DAOException;
 }

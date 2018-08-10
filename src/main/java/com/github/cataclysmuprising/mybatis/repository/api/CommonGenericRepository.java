@@ -21,24 +21,14 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - SelectableDao.java
+ *  	mybatis-generic-crud - CommonGenericRepository.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:52 PM
+ * 	    Last Modified - 8/8/18 1:51 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
 package com.github.cataclysmuprising.mybatis.repository.api;
 
-import com.github.cataclysmuprising.mybatis.exception.DAOException;
+public interface CommonGenericRepository<T, C> extends SelectableRepository<T, C>, InsertableRepository<T>, UpdateableRepository<T, C>, RemoveableRepository<T, C> {
 
-import java.util.List;
-
-public interface SelectableDao<T, C> {
-	T select(long primaryKey) throws DAOException;
-
-	T select(C criteria) throws DAOException;
-
-	List<T> selectList(C criteria) throws DAOException;
-
-	long selectCounts(C criteria) throws DAOException;
 }

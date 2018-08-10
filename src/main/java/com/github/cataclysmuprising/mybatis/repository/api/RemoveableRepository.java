@@ -21,24 +21,19 @@
  *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *   SOFTWARE.
  *
- *  	mybatis-generic-crud - UpdateableDao.java
+ *  	mybatis-generic-crud - RemoveableRepository.java
  *  	Using Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
- * 	    Last Modified - 8/8/18 1:52 PM
+ * 	    Last Modified - 8/8/18 1:51 PM
  *  	@author Than Htike Aung {@literal <rage.cataclysm@gmail.com>}
  *  	@Since 2018
  */
 package com.github.cataclysmuprising.mybatis.repository.api;
 
+import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
 
-import java.util.HashMap;
-import java.util.List;
+public interface RemoveableRepository<T, C> {
+	long delete(long primaryKey, long recordUpdId) throws ConsistencyViolationException, DAOException;
 
-public interface UpdateableDao<T, C> {
-	long update(T record, long recordUpdId) throws DuplicatedEntryException, DAOException;
-
-	void update(List<T> records, long recordUpdId) throws DuplicatedEntryException, DAOException;
-
-	long update(C criteria, HashMap<String, Object> updateItems, long recordUpdId) throws DAOException, DuplicatedEntryException;
+	long delete(C criteria, long recordUpdId) throws ConsistencyViolationException, DAOException;
 }

@@ -33,7 +33,7 @@ import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.ConsistencyViolationException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
 import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
-import com.github.cataclysmuprising.mybatis.repository.api.XGenericDao;
+import com.github.cataclysmuprising.mybatis.repository.api.XGenericRepository;
 import com.github.cataclysmuprising.mybatis.service.api.XGenericService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,9 +43,9 @@ import java.util.List;
 
 public class XGenericServiceImpl<T, C> extends BaseServiceImpl implements XGenericService<T, C> {
 	private static final Logger serviceLogger = LogManager.getLogger("serviceLogs." + XGenericServiceImpl.class.getName());
-	private XGenericDao<T, C> dao;
+	private XGenericRepository<T, C> dao;
 
-	public XGenericServiceImpl(XGenericDao<T, C> dao) {
+	public XGenericServiceImpl(XGenericRepository<T, C> dao) {
 		this.dao = dao;
 	}
 

@@ -31,7 +31,7 @@ package com.github.cataclysmuprising.mybatis.service;
 
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
-import com.github.cataclysmuprising.mybatis.repository.api.SelectableDao;
+import com.github.cataclysmuprising.mybatis.repository.api.SelectableRepository;
 import com.github.cataclysmuprising.mybatis.service.api.root.SelectableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,9 +41,9 @@ import java.util.List;
 
 public class SelectableServiceImpl<T, C> extends BaseServiceImpl implements SelectableService<T, C> {
 	private static final Logger serviceLogger = LogManager.getLogger("serviceLogs." + SelectableServiceImpl.class.getName());
-	private SelectableDao<T, C> dao;
+	private SelectableRepository<T, C> dao;
 
-	public SelectableServiceImpl(SelectableDao<T, C> dao) {
+	public SelectableServiceImpl(SelectableRepository<T, C> dao) {
 		this.dao = dao;
 	}
 

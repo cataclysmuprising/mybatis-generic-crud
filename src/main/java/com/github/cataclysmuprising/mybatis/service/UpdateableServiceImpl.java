@@ -32,7 +32,7 @@ package com.github.cataclysmuprising.mybatis.service;
 import com.github.cataclysmuprising.mybatis.exception.BusinessException;
 import com.github.cataclysmuprising.mybatis.exception.DAOException;
 import com.github.cataclysmuprising.mybatis.exception.DuplicatedEntryException;
-import com.github.cataclysmuprising.mybatis.repository.api.UpdateableDao;
+import com.github.cataclysmuprising.mybatis.repository.api.UpdateableRepository;
 import com.github.cataclysmuprising.mybatis.service.api.root.UpdateableService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -43,9 +43,9 @@ import java.util.List;
 
 public class UpdateableServiceImpl<T, C> extends BaseServiceImpl implements UpdateableService<T, C> {
 	private static final Logger serviceLogger = LogManager.getLogger("serviceLogs." + UpdateableServiceImpl.class.getName());
-	private UpdateableDao<T, C> dao;
+	private UpdateableRepository<T, C> dao;
 
-	public UpdateableServiceImpl(UpdateableDao<T, C> dao) {
+	public UpdateableServiceImpl(UpdateableRepository<T, C> dao) {
 		this.dao = dao;
 	}
 
